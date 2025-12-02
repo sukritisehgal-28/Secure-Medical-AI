@@ -1,0 +1,6 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/securemed-ai/mednotes-frontend', '.']
+    dir: 'frontend'
+images:
+  - 'gcr.io/securemed-ai/mednotes-frontend'

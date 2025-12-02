@@ -1,0 +1,31 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: mednotes
+    ports: ["5434:5432"]
+    volumes: [ "pgdata:/var/lib/postgresql/data" ]
+
+  redis:
+    image: redis:7-alpine
+    ports: ["6379:6379"]
+
+  # Uncomment later when Dockerfiles are added:
+  # api:
+  #   build:
+  #     context: ./api
+  #   env_file: .env
+  #   depends_on: [postgres, redis]
+  #   ports: ["8000:8000"]
+
+  # ui:
+  #   build:
+  #     context: ./ui
+  #   env_file: .env
+  #   depends_on: [api]
+  #   ports: ["8501:8501"]
+
+volumes:
+  pgdata:
